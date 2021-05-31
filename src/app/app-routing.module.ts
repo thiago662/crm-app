@@ -7,16 +7,25 @@ import { ProfileComponent } from './components/profile/profile.component'
 const routes: Routes = [
   {
     path: '',
-    component: SignComponent
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: SignComponent,
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -1,33 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { auth } from './auth.model';
+import { Component } from '@angular/core';
 import { SignService } from './sign.service';
 
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
-  styleUrls: ['./sign.component.scss']
+  styleUrls: ['./sign.component.scss'],
 })
-export class SignComponent implements OnInit {
+export class SignComponent {
 
   constructor(
-    private signService: SignService
+    private signService: SignService,
   ) { }
-
-  ngOnInit(): void {
-  }
 
   login(): void{
     this.signService.login('thiago@followize.com.br', '@123mudar')
-      .then(data => {
-        console.log('then');
+      .then((data: any) => {
         console.log(data);
         localStorage.setItem('accessToken', data.access_token);
       })
-      .catch(() => {
-        console.log('catch');
+      .catch((error: any) => {
+        console.log(error);
       })
       .finally(() => {
-        console.log('finally');
       });
   }
 }
