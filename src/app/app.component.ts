@@ -8,10 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'crm-app';
   isUserLogged = false;
+  components = [
+    'Teste',
+    'teste'
+  ]
 
   ngOnInit(): void {
     // this.isUserLogged = this.userService.isUserLogged();
-    this.isUserLogged = false;
+    this.isUserLogged = true;
 
   }
 }

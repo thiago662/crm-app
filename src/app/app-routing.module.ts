@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SignComponent } from './components/sign/sign.component';
 import { ProfileComponent } from './components/profile/profile.component'
+import { UserComponent } from './components/user/user.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,8 +13,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: 'sign',
     component: SignComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'user',
+    component: UserComponent,
   },
   {
     path: 'profile',
@@ -20,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'sign',
   },
 ];
 

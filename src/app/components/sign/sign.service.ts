@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sign } from './sign.model';
 import { environment } from '../../../environments/environment';
+import { auth } from './auth.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +11,7 @@ export class SignService {
 
   sign: Sign = {
     client_id: '2',
-    client_secret: '5oobfaavQXXm2t6KA9HdFPxuUljbQ01YK0mTTYVk',
+    client_secret: 'VKr4fIRCZpThxFLR2CBQU0xmA24NukMEyaUEPqbd',
     grant_type: 'password',
     password: '',
     username: '',
@@ -20,10 +21,20 @@ export class SignService {
     private http: HttpClient,
   ) { }
 
-  login(email: string, password: string){
+  authorization(email: string, password: string): Promise<auth> {
     this.sign.password = password;
     this.sign.username = email;
 
-    return this.http.post(this.environment.baseUrl + 'oauth/token', this.sign).toPromise();
+    return this.http.post<auth>(this.environment.baseUrl + 'oauth/token', this.sign).toPromise();
+  }
+
+  setToken(token: auth): void {
+    localStorage.setItem('accessToken', JSON.stringify(token));
+  }
+
+  getToken(): auth | void {
+    if (typeof localStorage.getItem('accessToken') == 'string') {
+      return JSON.parse(<string>localStorage.getItem('accessToken'));
+    }
   }
 }

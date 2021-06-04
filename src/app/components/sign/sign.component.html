@@ -1,24 +1,49 @@
-<div class="container">
+<!-- <div class="container">
 	<div class="row justify-content-sm-center">
 		<div class="col-sm-6">
 			<div class="card">
 				<form>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" [(ngModel)]="email" name="email">
 					</div>
 					<div class="form-group">
 						<label>Senha</label>
-						<input type="password" class="form-control">
+						<input type="password" class="form-control" [(ngModel)]="password" name="password">
 					</div>
+          <div class="form-group  text-center">
+            <button class="btn btn-primary" (click)="login()">Enviar</button>
+          </div>
 				</form>
-				<div class="form-group  text-center">
-					<button class="btn btn-primary" (click)="login()">Submit</button>
-				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <!-- <div class="row align-items-center"> -->
 <!-- <img src="https://auth.followize.com.br/img/header_logo.png" alt="logo followize"> -->
+
+
+<!-- <main class="form-signin"> -->
+<!-- <div class="w-25"> -->
+  <form class="bg-light w-25 p-3">
+
+    <img class="mb-4" src="https://auth.followize.com.br/img/header_logo.png" alt="logo followize" width="72" height="57">
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" [(ngModel)]="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label>Senha</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password">
+    </div>
+
+    <div class="form-group text-center">
+      <button class="btn btn-primary" (click)="login()">Enviar</button>
+    </div>
+
+  </form>
+<!-- </div> -->
+<!-- </main> -->
