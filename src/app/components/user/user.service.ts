@@ -6,7 +6,7 @@ import { SignService } from '../sign/sign.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService {
+export class UserService {
   environment = environment;
 
   constructor(
@@ -14,10 +14,12 @@ export class ProfileService {
     private signService: SignService,
   ) { }
 
-  getProfile(){
+  getUsers() {
     var authorization: any = this.signService.getToken();
 
-    return this.http.get(this.environment.baseUrl + 'api/users/profile', {
+    // return this.http.get(this.environment.baseUrl + 'api/users/?' + 'df=' + 'sagsfg' + '&sg=' + 'sgh').toPromise();
+
+    return this.http.get(this.environment.baseUrl + 'api/users', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + authorization.access_token,

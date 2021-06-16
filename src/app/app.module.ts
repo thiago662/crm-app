@@ -14,6 +14,9 @@ import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UserComponent } from './components/user/user.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LeadComponent } from './components/lead/lead.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HeaderComponent,
     UserComponent,
     DashboardComponent,
+    LeadComponent,
+    TrashComponent,
+    ReportComponent,
   ],
   imports: [
     BrowserModule,

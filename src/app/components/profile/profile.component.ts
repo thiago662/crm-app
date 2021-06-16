@@ -13,17 +13,19 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getToken();
+    this.profile();
   }
 
-  getToken(){
-    console.log(localStorage.getItem('accessToken'));
-  }
-
-  profile(){
+  profile() {
     this.profileService.getProfile()
-      .then(data => {
+      .then((data: any) => {
         console.log(data);
       })
+      .catch((error: any) => {
+        console.log(error);
+      })
+      .finally(() => {
+      });
   }
+
 }
