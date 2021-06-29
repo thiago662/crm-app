@@ -17,7 +17,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeadComponent } from './lead/lead.component';
 import { TrashComponent } from './trash/trash.component';
 import { ReportComponent } from './report/report.component';
-import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { MainComponent } from './main/main.component';
     LeadComponent,
     TrashComponent,
     ReportComponent,
-    MainComponent,
   ],
   imports: [
     BrowserModule,
