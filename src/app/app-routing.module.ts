@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignComponent } from './components/sign/sign.component';
-import { ProfileComponent } from './components/profile/profile.component'
-import { UserComponent } from './components/user/user.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LeadComponent } from './components/lead/lead.component';
-import { ReportComponent } from './components/report/report.component';
-import { TrashComponent } from './components/trash/trash.component';
+import { SignComponent } from './sign/sign.component';
+import { ProfileComponent } from './profile/profile.component'
+import { UserComponent } from './user/user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LeadComponent } from './lead/lead.component';
+import { ReportComponent } from './report/report.component';
+import { TrashComponent } from './trash/trash.component';
 
 const routes: Routes = [
   {

@@ -3,20 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignComponent } from './components/sign/sign.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { NavComponent } from './components/nav/nav.component';
-import { HeaderComponent } from './components/header/header.component';
-import { UserComponent } from './components/user/user.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LeadComponent } from './components/lead/lead.component';
-import { TrashComponent } from './components/trash/trash.component';
-import { ReportComponent } from './components/report/report.component';
+import { SignComponent } from './sign/sign.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
+import { UserComponent } from './user/user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LeadComponent } from './lead/lead.component';
+import { TrashComponent } from './trash/trash.component';
+import { ReportComponent } from './report/report.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReportComponent } from './components/report/report.component';
     LeadComponent,
     TrashComponent,
     ReportComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { ReportComponent } from './components/report/report.component';
     HttpClientModule,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

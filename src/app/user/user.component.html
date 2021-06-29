@@ -1,0 +1,161 @@
+<!-- <ul class="nav bg-secondary">
+  <li class="nav-item p-3 text-center">
+    Usuarios
+  </li>
+</ul> -->
+<ul class="nav align-items-center bg-secondary">
+  <li class="nav-item p-3 text-center">
+    Usuarios
+  </li>
+</ul>
+
+
+<div class="p-3">
+  <!-- <p> -->
+    Filtros:
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-secondary">
+        <i class="fas fa-sync"></i>
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample">
+        <i class="fas fa-filter"></i>
+      </button>
+    </div>
+
+    <button type="button" class="btn btn-primary rounded-circle" (click)="openNewUserModal()">
+      <i class="fas fa-plus"></i>
+    </button>
+
+  <!-- </p> -->
+  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div class="card">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+          </div>
+          <div class="col">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-end">
+        <button type="button" class="btn btn-secondary">Limpar Filtro</button>
+        <button type="button" class="btn btn-secondary">Filtrar</button>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Celular</th>
+          <th scope="col">Status</th>
+          <th scope="col">Conta</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users?.data">
+          <td>{{ user?.name }}</td>
+          <td>{{ user?.email }}</td>
+          <td>{{ user?.cell }}</td>
+          <td>{{ user?.status }}</td>
+          <td>{{ user?.account?.name }}</td>
+          <td>{{ user?.role?.title }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-danger" (click)="openDeleteModal(user)">
+                <i class="fas fa-trash"></i>
+              </button>
+              <button type="button" class="btn btn-outline-primary" (click)="openEditModal(user)">
+                <i class="fas fa-pen"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #contentCreate let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Criar usuario</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <form [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="cell">cell</label>
+        <input type="text" class="form-control" id="cell" formControlName="cell">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="status">status</label>
+        <input type="text" class="form-control" id="status" formControlName="status">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="role_id">role_id</label>
+        <input type="text" class="form-control" id="role_id" formControlName="role_id">
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancelar</button>
+      <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')" [disabled]="!newUserForm.valid">Salvar</button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #contentEdit let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Editar usuario</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Editando usuario.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Salvar</button>
+  </div>
+</ng-template>
+
+<ng-template #contentDelete let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Exclusão de usuario</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja mesmo excluir esse usuario?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Deletar</button>
+  </div>
+</ng-template>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sign } from './sign.model';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { auth } from './auth.model';
 @Injectable({
   providedIn: 'root',
