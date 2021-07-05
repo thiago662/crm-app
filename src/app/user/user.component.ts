@@ -65,4 +65,9 @@ export class UserComponent implements OnInit {
     this.modalService.open(this.contentDelete, {ariaLabelledBy: 'modal-basic-title'});
     console.log('DELETAR', user);
   }
+
+  reload() {
+    this.ngOnInit();
+    console.log('recarregou');
+  }
 }
