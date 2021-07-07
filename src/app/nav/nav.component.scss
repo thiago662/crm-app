@@ -1,3 +1,15 @@
 .fas {
     font-size: 20px;
 }
+
+.active-test::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 5px;
+    height: 25px;
+    background-color: #25ae67;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-sizing: border-box;
+}
