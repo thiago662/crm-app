@@ -12,18 +12,4 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openPopover(popover: any) {
-    // if (popover.isOpen()) {
-    //   popover.close();
-    // } else {
-    //   popover.open();
-    // }
-
-    popover.open();
-  }
-
-  closePopover(popover: any) {
-    popover.close();
-  }
-
 }

@@ -10,9 +10,9 @@ export class SignService {
   environment = environment;
 
   sign: Sign = {
-    client_id: '2',
-    client_secret: 'VKr4fIRCZpThxFLR2CBQU0xmA24NukMEyaUEPqbd',
-    grant_type: 'password',
+    client_id: this.environment.clientId,
+    client_secret: this.environment.clientSecret,
+    grant_type: this.environment.grantType,
     password: '',
     username: '',
   };

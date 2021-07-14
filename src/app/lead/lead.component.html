@@ -1,1 +1,279 @@
-<p>lead works!</p>
+<ul class="nav align-items-center bg-white border-bottom">
+  <li class="nav-item p-3 text-center">
+    Usuarios
+  </li>
+</ul>
+
+<div class="p-3">
+
+  <div class="mb-3">
+
+    Filtros:
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-tertiary" (click)="reload()">
+        <i class="fas fa-sync"></i>
+      </button>
+      <button type="button" class="btn btn-tertiary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+        <i class="fas fa-filter"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <div class="card">
+        <div class="card-header">
+          Filtros
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col">
+              <label>Name:</label>
+              <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+            </div>
+            <div class="col">
+              <label>Name:</label>
+              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-end">
+          <button type="button" class="btn btn-outline-tertiary">Limpar Filtro ([numero de filtros])</button>
+          <button type="button" class="btn btn-tertiary"><i class="fas fa-filter"></i>Filtrar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mb-3">
+
+    <div class="col-lg-3">
+      <div class="card bg-dark text-light">
+        <div class="card-body row">
+          <div class="col-3">
+            <div class="btn btn-light text-dark rounded-circle">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="row">
+              <div class="col">
+                <h6 class="card-title">
+                  1
+                </h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Leads
+              </div>
+            </div>
+          </div>
+          <div class="col-1">
+            <i class="fas fa-chevron-right"></i>
+            <i class="fas fa-question-circle"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card bg-white text-dark">
+        <div class="card-body row">
+          <div class="col-3">
+            <div class="btn btn-dark rounded-circle">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="row">
+              <div class="col">
+                <h6 class="card-title">1</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Conversões
+              </div>
+            </div>
+          </div>
+          <div class="col-1">
+            <i class="fas fa-chevron-right"></i>
+            <i class="fas fa-question-circle"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+
+    <button type="button" class="btn btn-danger rounded-circle">
+      <i class="fas fa-trash"></i>
+    </button>
+
+    <button type="button" class="btn btn-primary rounded-circle" (click)="openNewLeadModal()">
+      <i class="fas fa-plus"></i>
+    </button>
+
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body row">
+      <div class="card-text col-lg">
+        <div class="row">
+          <div class="col">
+            <h6 class="card-title">Entrada:</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            teste
+          </div>
+        </div>
+      </div>
+      <div class="card-text col-lg">
+        <div class="row">
+          <div class="col">
+            <h6 class="card-title">Nome:</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            teste
+          </div>
+        </div>
+      </div>
+      <div class="card-text col-lg">
+        <div class="row">
+          <div class="col">
+            <h6 class="card-title">Atendente:</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            teste
+          </div>
+        </div>
+      </div>
+      <div class="card-text col-lg">
+        <div class="row">
+          <div class="col">
+            <h6 class="card-title">Tipo:</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            teste
+          </div>
+        </div>
+      </div>
+      <div class="card-text col-lg">
+        <div class="row">
+          <div class="col">
+            <h6 class="card-title">Status:</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            teste
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #contentCreate let-modal>
+  <form [formGroup]="newLeadForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h5 class="modal-title">Criar usuario</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body row g-3">
+
+      <div class="col-md-12 mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="cell">cell</label>
+        <input type="text" class="form-control" id="cell" formControlName="cell">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="user_code">user_code</label>
+        <input type="text" class="form-control" id="user_code" formControlName="user_code">
+      </div>
+
+      <!-- <div class="col-md-6 mb-3">
+        <label class="form-label" for="account_id">account_id</label>
+        <input type="text" class="form-control" id="account_id" formControlName="account_id">
+      </div> -->
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="description">description</label>
+        <input type="text" class="form-control" id="description" formControlName="description">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="user_id">user_id</label>
+        <input type="text" class="form-control" id="user_id" formControlName="user_id">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="origin_id">origin_id</label>
+        <input type="text" class="form-control" id="origin_id" formControlName="origin_id">
+      </div>
+
+      <!-- <div class="col-md-6 mb-3">
+        <label class="form-label" for="contact_id">contact_id</label>
+        <input type="text" class="form-control" id="contact_id" formControlName="contact_id">
+      </div> -->
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancelar</button>
+      <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')" [disabled]="!newLeadForm.valid">Salvar</button>
+    </div>
+  </form>
+</ng-template>
+
+<!-- <ng-template #contentEdit let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Editar usuario</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Editando usuario.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Salvar</button>
+  </div>
+</ng-template> -->
+
+<!-- <ng-template #contentDelete let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Exclusão de usuario</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja mesmo excluir esse usuario?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Deletar</button>
+  </div>
+</ng-template> -->
