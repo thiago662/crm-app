@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LeadService } from './lead.service';
 
 @Component({
   selector: 'app-lead',
@@ -13,7 +14,7 @@ export class LeadComponent implements OnInit {
   @ViewChild("contentEdit") contentEdit: any;
   @ViewChild("contentDelete") contentDelete: any;
   isCollapsed = true;
-  // leads: any;
+  leads: any;
   newLeadForm = new FormGroup({
     // Contact
     name: new FormControl(''),
@@ -31,27 +32,35 @@ export class LeadComponent implements OnInit {
   constructor(
     private router: Router,
     private modalService: NgbModal,
+    private leadService: LeadService,
   ) { }
 
   ngOnInit(): void {
-    // this.getLeads();
+    this.getLeads();
   }
 
-  // getLeads() {
-  //   this.leadService.getLeads()
-  //     .then((data: any) => {
-  //       this.leads = data;
-  //     })
-  //     .catch((error: any) => {
-  //       console.log(error);
-  //     })
-  //     .finally(() => {
-  //     });
-  // }
+  getLeads() {
+    this.leadService.getLeads()
+      .then((data: any) => {
+        this.leads = data;
+      })
+      .catch((error: any) => {
+        console.log(error);
+      })
+      .finally(() => {
+      });
+  }
 
   onSubmit(): void {
-    console.log(this.newLeadForm.value);
-    this.newLeadForm.reset();
+    this.leadService.createLead(this.newLeadForm.value)
+      .then((data: any) => {
+        this.newLeadForm.reset();
+      })
+      .catch((error: any) => {
+        console.log(error);
+      })
+      .finally(() => {
+      });
   }
 
   openNewLeadModal() {
@@ -60,21 +69,17 @@ export class LeadComponent implements OnInit {
       size: 'lg'
       // scrollable: true
     });
-    console.log('CRIAR');
   }
 
   openEditModal() {
     this.modalService.open(this.contentEdit, {ariaLabelledBy: 'modal-basic-title'});
-    console.log('EDITAR');
   }
 
   openDeleteModal() {
     this.modalService.open(this.contentDelete, {ariaLabelledBy: 'modal-basic-title'});
-    console.log('DELETAR');
   }
 
   reload() {
     this.ngOnInit();
-    console.log('recarregou');
   }
 }

@@ -47,27 +47,22 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.newUserForm.value);
     this.newUserForm.reset();
   }
 
   openNewUserModal() {
     this.modalService.open(this.contentCreate, {ariaLabelledBy: 'modal-basic-title'});
-    console.log('CRIAR');
   }
 
   openEditModal(user: any) {
     this.modalService.open(this.contentEdit, {ariaLabelledBy: 'modal-basic-title'});
-    console.log('EDITAR', user);
   }
 
   openDeleteModal(user: any) {
     this.modalService.open(this.contentDelete, {ariaLabelledBy: 'modal-basic-title'});
-    console.log('DELETAR', user);
   }
 
   reload() {
     this.ngOnInit();
-    console.log('recarregou');
   }
 }
