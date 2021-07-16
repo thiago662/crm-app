@@ -21,12 +21,15 @@ export class LeadComponent implements OnInit {
     cell: new FormControl(''),
     email: new FormControl(''),
     user_code: new FormControl(''),
-    account_id: new FormControl(''),
-    // Interest
-    description: new FormControl(''),
-    user_id: new FormControl(''),
+    // account_id: new FormControl(''),
+    // user_id: new FormControl(''),
     origin_id: new FormControl(''),
-    contact_id: new FormControl(''),
+
+    // FollowUp
+    type: new FormControl(''),
+
+    // Interest
+    interest_id: new FormControl(''),
   });
 
   constructor(
