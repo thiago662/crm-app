@@ -21,8 +21,6 @@ export class LeadComponent implements OnInit {
     cell: new FormControl(''),
     email: new FormControl(''),
     user_code: new FormControl(''),
-    // account_id: new FormControl(''),
-    // user_id: new FormControl(''),
     origin_id: new FormControl(''),
 
     // FollowUp
