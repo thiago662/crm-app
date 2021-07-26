@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeadComponent } from './lead/lead.component';
 import { TrashComponent } from './trash/trash.component';
 import { ReportComponent } from './report/report.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReportComponent } from './report/report.component';
     LeadComponent,
     TrashComponent,
     ReportComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
