@@ -17,6 +17,14 @@ export class SignComponent {
     private router: Router,
   ) { }
 
+  ngOnInit(): void {
+    var isUserLogged = this.signService.isUserLogged();
+
+    if (isUserLogged) {
+      this.router.navigate(['/profile']);
+    }
+  }
+
   login(): void {
     this.signService.authorization(this.email, this.password)
       .then((data: auth) => {

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Sign } from './sign.model';
 import { environment } from '../../environments/environment';
 import { auth } from './auth.model';
@@ -17,6 +17,8 @@ export class SignService {
     username: '',
   };
 
+  isLoggedEmitter = new EventEmitter<boolean>();
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -30,11 +32,25 @@ export class SignService {
 
   setToken(token: auth): void {
     localStorage.setItem('accessToken', JSON.stringify(token));
+    this.isLoggedEmitter.emit(true);
   }
 
   getToken(): auth | void {
     if (typeof localStorage.getItem('accessToken') == 'string') {
       return JSON.parse(<string>localStorage.getItem('accessToken'));
     }
+  }
+
+  isUserLogged(): boolean {
+    if (typeof localStorage.getItem('accessToken') == 'string') {
+      return true;
+    }
+
+    return false;
+  }
+
+  removeToken(): void {
+    localStorage.removeItem('accessToken');
+    this.isLoggedEmitter.emit(false);
   }
 }

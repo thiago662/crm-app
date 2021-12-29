@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { SignService } from './sign/sign.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +15,16 @@ export class AppComponent {
     'teste'
   ]
 
-  ngOnInit(): void {
-    // this.isUserLogged = this.userService.isUserLogged();
-    this.isUserLogged = true;
+  constructor(
+    private signService: SignService,
+    private router: Router,
+  ) { }
 
+  ngOnInit(): void {
+    this.isUserLogged = this.signService.isUserLogged();
+
+    this.signService.isLoggedEmitter.subscribe(show => {
+      this.isUserLogged = show;
+    });
   }
 }
