@@ -196,7 +196,7 @@
     <div class="modal-body row g-3">
 
       <div class="col-md-12 mb-3">
-        <label class="form-label" for="name">Name</label>
+        <label class="form-label" for="name">Nome</label>
         <input type="text" class="form-control" id="name" formControlName="name">
       </div>
 
@@ -206,28 +206,34 @@
       </div>
 
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="cell">cell</label>
+        <label class="form-label" for="cell">Celular</label>
         <input type="text" class="form-control" id="cell" formControlName="cell">
       </div>
 
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="user_code">user_code</label>
+        <label class="form-label" for="user_code">CPF</label>
         <input type="text" class="form-control" id="user_code" formControlName="user_code">
       </div>
 
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="type">type</label>
-        <input type="text" class="form-control" id="type" formControlName="type">
+        <label class="form-label" for="user_id">Atendente</label>
+        <select class="form-select" id="user_id" formControlName="user_id">
+          <option *ngFor="let user of users" value="{{ user.id }}">{{ user.name }}</option>
+        </select>
       </div>
 
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="origin_id">origin_id</label>
-        <input type="text" class="form-control" id="origin_id" formControlName="origin_id">
+        <label class="form-label" for="origin_id">Origem</label>
+        <select class="form-select" id="origin_id" formControlName="origin_id">
+          <option *ngFor="let origin of origins" value="{{ origin.id }}">{{ origin.title }}</option>
+        </select>
       </div>
 
       <div class="col-md-6 mb-3">
-        <label class="form-label" for="interest_id">interest_id</label>
-        <input type="text" class="form-control" id="interest_id" formControlName="interest_id">
+        <label class="form-label" for="interest_id">Interese</label>
+        <select class="form-select" id="interest_id" formControlName="interest_id">
+          <option *ngFor="let interest of interests" value="{{ interest.id }}">{{ interest.name }}</option>
+        </select>
       </div>
 
     </div>

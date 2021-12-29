@@ -15,6 +15,9 @@ export class LeadComponent implements OnInit {
   @ViewChild("contentDelete") contentDelete: any;
   isCollapsed = true;
   leads: any;
+  users: any;
+  origins: any;
+  interests: any;
   newLeadForm = new FormGroup({
     // Contact
     name: new FormControl(''),
@@ -22,11 +25,7 @@ export class LeadComponent implements OnInit {
     email: new FormControl(''),
     user_code: new FormControl(''),
     origin_id: new FormControl(''),
-
-    // FollowUp
-    type: new FormControl(''),
-
-    // Interest
+    user_id: new FormControl(''),
     interest_id: new FormControl(''),
   });
 
@@ -38,6 +37,9 @@ export class LeadComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLeads();
+    this.getUsersOptions();
+    this.getOriginsOptions();
+    this.getInterestsOptions();
   }
 
   getLeads() {
@@ -52,10 +54,47 @@ export class LeadComponent implements OnInit {
       });
   }
 
+  getUsersOptions() {
+    this.leadService.getUsersOptions()
+    .then((data: any) => {
+      this.users = data;
+    })
+    .catch((error: any) => {
+      console.log(error);
+    })
+    .finally(() => {
+    });
+  }
+
+  getOriginsOptions() {
+    this.leadService.getOriginsOptions()
+    .then((data: any) => {
+      this.origins = data;
+    })
+    .catch((error: any) => {
+      console.log(error);
+    })
+    .finally(() => {
+    });
+  }
+
+  getInterestsOptions() {
+    this.leadService.getInterestsOptions()
+    .then((data: any) => {
+      this.interests = data;
+    })
+    .catch((error: any) => {
+      console.log(error);
+    })
+    .finally(() => {
+    });
+  }
+
   onSubmit(): void {
     this.leadService.createLead(this.newLeadForm.value)
       .then((data: any) => {
         this.newLeadForm.reset();
+        this.reload();
       })
       .catch((error: any) => {
         console.log(error);
